@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/home"
+        android:title="Home"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/home"/>
+
+    <item android:id="@+id/category"
+        android:title="Category"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/category"/>
+
+    <item android:id="@+id/stores"
+        android:title="Stores"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/store"/>
+
+    <item android:id="@+id/rider"
+        android:title="Rider"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/rider"/>
+
+    <item android:id="@+id/coupons"
+        android:title="Coupons"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/discount_tag" />
+
+
+</menu>
