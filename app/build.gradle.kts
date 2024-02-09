@@ -63,4 +63,5 @@ dependencies {
     implementation("com.razorpay:checkout:1.6.33")
     implementation("com.karumi:dexter:6.2.3")
     implementation("com.android.volley:volley:1.2.1")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
 }

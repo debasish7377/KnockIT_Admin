@@ -62,6 +62,17 @@ class RidersVerificationAdapter(var context: Context, var model: List<RiderModel
                 }
         }
 
+        holder.deleteRider.setOnClickListener {
+            FirebaseFirestore.getInstance()
+                .collection("RIDERS")
+                .document(model[position].riderId)
+                .delete()
+                .addOnCompleteListener {
+                    Toast.makeText(context, "Rider Deleted", Toast.LENGTH_SHORT).show()
+                    RiderDatabase.loadPendingRiders(context, RiderVerificationActivity.riderRecyclerView)
+                }
+        }
+
         holder.itemView.setOnClickListener {
             var intent = Intent(context, RiderDetails::class.java)
             intent.putExtra("riderId", model[position].riderId)
@@ -79,5 +90,6 @@ class RidersVerificationAdapter(var context: Context, var model: List<RiderModel
         var name: TextView = itemView.findViewById(R.id.riderName)
         var email: TextView = itemView.findViewById(R.id.riderEmail)
         var connectRider: AppCompatButton = itemView.findViewById(R.id.connectRider)
+        var deleteRider: AppCompatButton = itemView.findViewById(R.id.deleteRider)
     }
 }

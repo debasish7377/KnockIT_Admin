@@ -63,5 +63,46 @@ class MyOderDatabase {
 //                    qtyAdapter.notifyDataSetChanged()
 //                })
         }
+
+        fun loadUserOder(
+            context: Context,
+            myOrderRecyclerView: RecyclerView,
+            deliveryText: String,
+            uid: String
+        ) {
+            var orderModel: ArrayList<MyOderModel> = ArrayList<MyOderModel>()
+            var CartAdapter = MyOderAdapter(context!!, orderModel)
+            val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+            myOrderRecyclerView.layoutManager = layoutManager
+            myOrderRecyclerView.adapter = CartAdapter
+            var orderItems: ArrayList<MyOderModel> = ArrayList<MyOderModel>()
+
+            FirebaseFirestore.getInstance()
+                .collection("ORDER")
+                .orderBy("timeStamp", Query.Direction.DESCENDING)
+                .addSnapshotListener { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
+                    querySnapshot?.let {
+                        orderItems.clear()
+                        for (document in it) {
+                            val model = document.toObject(MyOderModel::class.java)
+                            orderItems.add(model)
+
+                            orderModel.clear()
+                            for (p in orderItems) {
+                                if (p.uid.equals(uid)) {
+                                    if (p.delivery.equals(deliveryText)) {
+                                        orderModel.add(p)
+                                    } else if (deliveryText.toString().equals("")) {
+                                        orderModel.add(p)
+                                    }
+                                }
+                            }
+                            CartAdapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+
+        }
+
     }
 }

@@ -68,6 +68,7 @@ class RiderAdapter(var context: Context, var model: List<RiderModel>) :
         ////////////////canceled dialog
 
 
+        holder.deleteRider.visibility = View.GONE
         holder.connectBtn.setOnClickListener {
             FirebaseFirestore.getInstance()
                 .collection("BRANCHES")
@@ -152,6 +153,7 @@ class RiderAdapter(var context: Context, var model: List<RiderModel>) :
         var name: TextView = itemView.findViewById<TextView?>(R.id.riderName)
         var email: TextView = itemView.findViewById<TextView?>(R.id.riderEmail)
         var connectBtn: AppCompatButton = itemView.findViewById<AppCompatButton?>(R.id.connectRider)
+        var deleteRider: AppCompatButton = itemView.findViewById(R.id.deleteRider)
 
     }
 

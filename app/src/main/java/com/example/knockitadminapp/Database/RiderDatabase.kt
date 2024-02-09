@@ -157,6 +157,7 @@ class RiderDatabase {
                             val model = document.toObject(RiderModel::class.java)
                             riders.add(model)
 
+                            ridersModel.clear()
                             for (p in riders) {
 
                                 if (!p.driverAccount.equals("Verified")){

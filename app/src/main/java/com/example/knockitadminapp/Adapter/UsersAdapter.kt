@@ -2,6 +2,7 @@ package com.example.knockitadminapp.Adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.knockitadminapp.Activity.UserDetailsActivity
 import com.example.knockitadminapp.Model.CouponsModel
 import com.example.knockitadminapp.Model.UserModel
 import com.example.knockitadminapp.R
@@ -44,6 +46,21 @@ class UsersAdapter(var context: Context, var model: List<UserModel>) :
         }else{
             Glide.with(context).load(model[position].profile).placeholder(R.drawable.avatara).into(holder.profile)
         }
+
+        holder.itemView.setOnClickListener {
+            var intent = Intent(context, UserDetailsActivity::class.java)
+            intent.putExtra("name",model[position].name)
+            intent.putExtra("profile",model[position].profile)
+            intent.putExtra("number",model[position].number)
+            intent.putExtra("address",model[position].address)
+            intent.putExtra("city",model[position].city)
+            intent.putExtra("pincode",model[position].pincode)
+            intent.putExtra("latitude",model[position].latitude.toString())
+            intent.putExtra("longitude",model[position].longitude.toString())
+            intent.putExtra("uid",model[position].uid)
+            context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {

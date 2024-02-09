@@ -10,9 +10,10 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="5dp"
+        android:src="@drawable/avatara"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/avatara" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/riderName"
@@ -48,6 +49,20 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteRider"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/login_btn_bg"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/pt_serif_regular"
+        android:text="Delete"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connectRider" />
 
     <LinearLayout
         android:layout_width="match_parent"
